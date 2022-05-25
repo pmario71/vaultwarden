@@ -30,11 +30,18 @@ properties:
     - command: []
       image: docker.io/vaultwarden/server:1.25.0-alpine
       name: vault-warden
+      volumeMounts:
+      - volumeName: azure-files-volume
+        mountPath: /data
       resources:
         cpu: 0.25
         memory: 0.5Gi
+    volumes:
+    - name: azure-files-volume
+      storageType: AzureFile
+      storageName: mystorage
     scale:
-      maxReplicas: 10
+      maxReplicas: 1
 resourceGroup: VaultWarden
 systemData:
   createdAt: '2022-05-25T16:14:49.8805235'
