@@ -1,0 +1,46 @@
+id: /subscriptions/3bd4723e-ab5f-41bd-90c1-0e8b8a944536/resourceGroups/VaultWarden/providers/Microsoft.App/containerApps/vaultwarden
+identity:
+  type: None
+location: North Europe
+name: vaultwarden
+properties:
+  configuration:
+    activeRevisionsMode: Single
+    ingress:
+      allowInsecure: false
+      external: true
+      fqdn: vaultwarden.bluewater-905368a0.northeurope.azurecontainerapps.io
+      targetPort: 80
+      traffic:
+      - latestRevision: true
+        weight: 100
+      transport: Auto
+    registries: []
+  customDomainVerificationId: 1C8D1E26D8D4B1AFD89531306E07ED871289C6DD1E40CFF362AF866BECEDFD90
+  latestRevisionFqdn: vaultwarden--8zs8s9p.bluewater-905368a0.northeurope.azurecontainerapps.io
+  latestRevisionName: vaultwarden--8zs8s9p
+  managedEnvironmentId: /subscriptions/3bd4723e-ab5f-41bd-90c1-0e8b8a944536/resourceGroups/VaultWarden/providers/Microsoft.App/managedEnvironments/managedEnvironment-VaultWarden-9bfb
+  outboundIpAddresses:
+  - 20.223.90.235
+  - 20.223.90.252
+  - 20.223.91.82
+  provisioningState: Succeeded
+  template:
+    containers:
+    - command: []
+      image: docker.io/vaultwarden/server:1.25.0-alpine
+      name: vault-warden
+      resources:
+        cpu: 0.25
+        memory: 0.5Gi
+    scale:
+      maxReplicas: 10
+resourceGroup: VaultWarden
+systemData:
+  createdAt: '2022-05-25T16:14:49.8805235'
+  createdBy: Mario.Plendl@outlook.com
+  createdByType: User
+  lastModifiedAt: '2022-05-25T16:18:20.1012483'
+  lastModifiedBy: Mario.Plendl@outlook.com
+  lastModifiedByType: User
+type: Microsoft.App/containerApps
