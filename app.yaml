@@ -41,7 +41,7 @@ properties:
       storageType: AzureFile
       storageName: mystorage
     scale:
-      maxReplicas: 1
+      maxReplicas: 3
 resourceGroup: VaultWarden
 systemData:
   createdAt: '2022-05-25T16:14:49.8805235'
