@@ -30,6 +30,9 @@ properties:
     - command: []
       image: docker.io/vaultwarden/server:1.25.0-alpine
       name: vault-warden
+      env: 
+        - name: ENABLE_DB_WAL
+          value: false
       volumeMounts:
       - volumeName: azure-files-volume
         mountPath: /data
