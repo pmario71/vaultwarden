@@ -33,6 +33,8 @@ properties:
       env: 
         - name: ENABLE_DB_WAL
           value: false
+        - name: DB_CONNECTION_RETRIES
+          value: 30
       volumeMounts:
       - volumeName: azure-files-volume
         mountPath: /data
