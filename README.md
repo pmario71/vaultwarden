@@ -8,9 +8,8 @@
 
 * [ ] Mounting `/data` from Azure Storage (see [link to ContainerApp docs](https://docs.microsoft.com/en-us/azure/container-apps/storage-mounts?pivots=aca-cli#configuration-1))
   * mounting storage from Azure Blobstorage creates the following problem on startup:\
-    
-  
 
+* [ ] disable creation of new user accounts
 * [ ] enable health checks
 * [ ] Import existing passwords
 * [ ] enable browser plugins

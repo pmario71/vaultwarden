@@ -37,7 +37,8 @@ properties:
           value: 30
       volumeMounts:
       - volumeName: azure-files-volume
-        mountPath: /data
+        # mount file and use as backup drive, CIFS mount is not supported for SQLite db
+        mountPath: /data_back
       resources:
         cpu: 0.25
         memory: 0.5Gi
@@ -46,7 +47,7 @@ properties:
       storageType: AzureFile
       storageName: mystorage
     scale:
-      maxReplicas: 3
+      maxReplicas: 1
 resourceGroup: VaultWarden
 systemData:
   createdAt: '2022-05-25T16:14:49.8805235'

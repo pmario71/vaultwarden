@@ -1,0 +1,6 @@
+FROM vaultwarden/server:1.25.0-alpine
+
+# overwrite original start.sh
+COPY start.sh /start.sh
+
+# docker run -d --name vaultwarden -v /vw-data/:/data_back/ -p 8080:80 vaultwarden/server:1.25.0-alpine
