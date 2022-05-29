@@ -39,6 +39,8 @@ properties:
           value: false
         - name: DB_CONNECTION_RETRIES
           value: 10
+        - name: SIGNUPS_ALLOWED
+          value: false
       volumeMounts:
       - volumeName: azure-files-volume
         # mount file and use as backup drive, CIFS mount is not supported for SQLite db
