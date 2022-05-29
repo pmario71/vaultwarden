@@ -1,5 +1,7 @@
 # Readme
 
+Image customizes `startup.sh` ([original on github](https://github.com/dani-garcia/vaultwarden/blob/main/docker/start.sh)) to backup SQLite db on mounted share and restores it before spinning up the container.
+
 ## Building the image
 
 ```sh

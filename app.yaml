@@ -15,7 +15,11 @@ properties:
       - latestRevision: true
         weight: 100
       transport: Auto
-    registries: []
+    registries: [{
+      "server": "pmario.azurecr.io",
+      "username": "pmario",
+      "passwordSecretRef": "acr-secret"
+      }]
   customDomainVerificationId: 1C8D1E26D8D4B1AFD89531306E07ED871289C6DD1E40CFF362AF866BECEDFD90
   latestRevisionFqdn: vaultwarden--8zs8s9p.bluewater-905368a0.northeurope.azurecontainerapps.io
   latestRevisionName: vaultwarden--8zs8s9p
@@ -28,13 +32,13 @@ properties:
   template:
     containers:
     - command: []
-      image: docker.io/vaultwarden/server:1.25.0-alpine
+      image: pmario.azurecr.io/vaultwarden/server_mp:1.25.0-alpine
       name: vault-warden
       env: 
         - name: ENABLE_DB_WAL
           value: false
         - name: DB_CONNECTION_RETRIES
-          value: 30
+          value: 10
       volumeMounts:
       - volumeName: azure-files-volume
         # mount file and use as backup drive, CIFS mount is not supported for SQLite db
