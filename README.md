@@ -15,6 +15,14 @@
 * [ ] enable browser plugins
 * [x] enable backup of sqlite db in `/data`
 
+## Backup of vault
+
+link in storage explorer to blob storage:
+
+```
+storageexplorer://v=1&accountid=%2Fsubscriptions%2F3bd4723e-ab5f-41bd-90c1-0e8b8a944536%2FresourceGroups%2FBackups%2Fproviders%2FMicrosoft.Storage%2FstorageAccounts%2Fnasbackup16&subscriptionid=3bd4723e-ab5f-41bd-90c1-0e8b8a944536&resourcetype=Azure.BlobContainer&resourcename=vaultwarden-backup
+```
+
 ## Update containerapp in Azure (manually)
 
 ```ps1
