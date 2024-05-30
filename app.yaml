@@ -32,7 +32,7 @@ properties:
   template:
     containers:
     - command: []
-      image: pmario.azurecr.io/vaultwarden/server_mp:1.25.0-alpine
+      image: pmario.azurecr.io/vaultwarden/server_mp:1.30.5-alpine
       name: vault-warden
       env: 
         - name: ENABLE_DB_WAL

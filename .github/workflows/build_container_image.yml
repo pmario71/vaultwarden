@@ -1,0 +1,46 @@
+name: Build container image
+
+env:
+  SOURCE_IMAGE_NAME: vaultwarden/server
+  SOURCE_IMAGE_TAG: 1.30.5-alpine
+  
+  TARGET_IMAGE_NAME: vaultwarden/server_mp
+
+# When this action will be executed
+on:
+  # Automatically trigger it when detected changes in repo
+  push:
+    branches: 
+      [ main ]
+    # paths:
+    # - 'app.yaml'
+    # - '.github/workflows/vaultwarden-AutoDeployTrigger-317eb00b-bbe0-4fe9-927a-9dd26427a604.yml'
+
+  # Allow mannually trigger 
+  workflow_dispatch:      
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout to the branch
+        uses: actions/checkout@v2
+
+      - name: Azure Login
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.VAULTWARDEN_AZURE_CREDENTIALS }}
+
+      - name: Login to ACR
+        uses: docker/login-action@v1
+        with:
+          registry: ${{ secrets.VAULTWARDEN_REGISTRY_URL }}
+          username: ${{ secrets.VAULTWARDEN_REGISTRY_USERNAME }}
+          password: ${{ secrets.VAULTWARDEN_REGISTRY_PASSWORD }}
+  
+      - name: Build and push Docker image
+        run: |
+          docker build -t ${{ env.TARGET_IMAGE_NAME }}:${{ env.SOURCE_IMAGE_TAG }} .
+          docker push ${{ secrets.VAULTWARDEN_REGISTRY_URL }}/${{ env.TARGET_IMAGE_NAME }}:1.30.5-alpine
+      
