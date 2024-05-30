@@ -3,7 +3,7 @@
 set I_REALLY_WANT_VOLATILE_STORAGE=true
 
 echo "Copy backuped state to /data ..."
-cp -r ./data_back/current/* ./data
+cp -r ./data_back/current/* ./data || :
 echo "Copy backuped state to /data ... [done]"
 
 if [ -r /etc/vaultwarden.sh ]; then
@@ -15,15 +15,15 @@ fi
 
 if [ -d /etc/vaultwarden.d ]; then
     for f in /etc/vaultwarden.d/*.sh; do
-        if [ -r $f ]; then
-            . $f
+        if [ -r "${f}" ]; then
+            . "${f}"
         fi
     done
 elif [ -d /etc/bitwarden_rs.d ]; then
     echo "### You are using the old /etc/bitwarden_rs.d script directory, please migrate to /etc/vaultwarden.d ###"
     for f in /etc/bitwarden_rs.d/*.sh; do
-        if [ -r $f ]; then
-            . $f
+        if [ -r "${f}" ]; then
+            . "${f}"
         fi
     done
 fi
@@ -38,5 +38,5 @@ function gracefulShutdown {
 }
 trap gracefulShutdown SIGTERM
 
-exec /vaultwarden "${@}" &
+exec /vaultwarden "${@}"
 wait
