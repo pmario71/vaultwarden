@@ -8,14 +8,6 @@ env:
 
 # When this action will be executed
 on:
-  # Automatically trigger it when detected changes in repo
-  push:
-    branches: 
-      [ main ]
-    # paths:
-    # - 'app.yaml'
-    # - '.github/workflows/vaultwarden-AutoDeployTrigger-317eb00b-bbe0-4fe9-927a-9dd26427a604.yml'
-
   # Allow mannually trigger 
   workflow_dispatch:      
 
