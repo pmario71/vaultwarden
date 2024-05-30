@@ -15,6 +15,14 @@
 * [ ] enable browser plugins
 * [x] enable backup of sqlite db in `/data`
 
+## Create role-binding to authenticate against Azure
+
+```sh
+az ad sp create-for-rbac --name "ghActionVaultwarden" --scope /subscriptions/3bd4723e-ab5f-41bd-90c1-0e8b8a944536/resourceGroups/VaultWarden --role Contributor --json-auth
+```
+
+* json output is then configured in Github Secrets for:  `VAULTWARDEN_AZURE_CREDENTIALS`
+
 ## Backup of vault
 
 link in storage explorer to blob storage:
