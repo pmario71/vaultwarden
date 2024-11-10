@@ -15,6 +15,12 @@
 * [ ] enable browser plugins
 * [x] enable backup of sqlite db in `/data`
 
+## 11.11.2024 - Updated to latest Vaultwarden Version
+
+* docker tag is not passed into `dockerfile`
+* customizing that "copies db into container before startup" removed
+  * according to article, db file only needs to be precreated <https://blog.mwiedemeyer.de/post/2023/Vaultwarden-Bitwarden-on-Azure-Container-Apps/>
+
 ## Create role-binding to authenticate against Azure
 
 ```sh

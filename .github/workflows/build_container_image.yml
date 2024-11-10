@@ -2,7 +2,7 @@ name: Build container image
 
 env:
   SOURCE_IMAGE_NAME: vaultwarden/server
-  SOURCE_IMAGE_TAG: 1.30.5-alpine
+  SOURCE_IMAGE_TAG: 1.32.3
   
   TARGET_IMAGE_NAME: vaultwarden/server_mp
 
@@ -33,6 +33,6 @@ jobs:
   
       - name: Build and push Docker image
         run: |
-          docker build -t ${{ secrets.VAULTWARDEN_REGISTRY_URL }}/${{ env.TARGET_IMAGE_NAME }}:${{ env.SOURCE_IMAGE_TAG }} -f vaultwarden_cust/dockerfile vaultwarden_cust
+          docker build --build-arg tag=${{ env.SOURCE_IMAGE_TAG }} -t ${{ secrets.VAULTWARDEN_REGISTRY_URL }}/${{ env.TARGET_IMAGE_NAME }}:${{ env.SOURCE_IMAGE_TAG }} -f vaultwarden_cust/dockerfile vaultwarden_cust
           docker push ${{ secrets.VAULTWARDEN_REGISTRY_URL }}/${{ env.TARGET_IMAGE_NAME }}:${{ env.SOURCE_IMAGE_TAG }}
       
