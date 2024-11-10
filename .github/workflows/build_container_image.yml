@@ -2,7 +2,7 @@ name: Build container image
 
 env:
   SOURCE_IMAGE_NAME: vaultwarden/server
-  SOURCE_IMAGE_TAG: 1.32.3
+  SOURCE_IMAGE_TAG: 1.32.3-alpine
   
   TARGET_IMAGE_NAME: vaultwarden/server_mp
 
