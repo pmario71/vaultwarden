@@ -32,7 +32,7 @@ properties:
   template:
     containers:
     - command: []
-      image: pmario.azurecr.io/vaultwarden/server_mp:1.30.5-alpine
+      image: pmario.azurecr.io/vaultwarden/server_mp:1.32.3-alpine
       name: vault-warden
       env: 
         - name: ENABLE_DB_WAL
@@ -43,8 +43,8 @@ properties:
           value: false
       volumeMounts:
       - volumeName: azure-files-volume
-        # mount file and use as backup drive, CIFS mount is not supported for SQLite db
-        mountPath: /data_back
+        # mount db files directly now
+        mountPath: /data
       resources:
         cpu: 0.25
         memory: 0.5Gi
