@@ -1,0 +1,13 @@
+version: '3.3'
+services:
+    server:
+        container_name: vaultwarden
+        volumes:
+          - 'C:/TFS/Data/vaultwarden/current:/data'
+        environment:
+          - SIGNUPS_ALLOWED=true
+          - ADMIN_TOKEN=B4wTnGXqgNVSMtqDJ2znqmyUmg6Nsa5N5IAPpkxi
+          - WEBSOCKET_ENABLED=true
+        ports:
+          - 9445:80 #map any custom port to use (replace 9445 not 80)
+        image: 'vaultwarden/server:latest'
