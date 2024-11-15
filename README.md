@@ -15,6 +15,20 @@
 * [ ] enable browser plugins
 * [x] enable backup of sqlite db in `/data`
 
+## 15.11.2024 - Config Storage
+
+following settings are overwritten:
+
+```ps1
+# disable 'write-ahead-lock'
+ENABLE_DB_WAL=false
+
+# data folder is overwritten
+DATA_FOLDER=data_mapped
+```
+
+* [Running `vaultwarden` without WAL enabled](https://github.com/dani-garcia/vaultwarden/wiki/Running-without-WAL-enabled)
+
 ## 11.11.2024 - Updated to latest Vaultwarden Version
 
 * docker tag is not passed into `dockerfile`
@@ -48,13 +62,13 @@ az containerapp update --name managedEnvironment-VaultWarden-9bfb --resource-gro
 
 ```sh
 cd ./vaultwarden_cust
-docker build -t vaultwarden/server_mp:1.30.5-alpine .
+docker build -t vaultwarden_mp --build-arg tag=1.32.4-alpine .
 ```
 
 ### Running the container
 
 ```sh
-docker run --name vaultwarden -v /vw-data/:/data_back/ -p 8080:80 vaultwarden/server_mp:1.30.5-alpine
+docker run --name vaultwarden -v /vw-data/:/data_back/ -p 8080:80 vaultwarden/server_mp:1.32.4-alpine
 ```
 
 ## Revision Log
