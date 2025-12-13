@@ -33,18 +33,25 @@ jobs:
             exit 1
           fi
 
-      - name: Azure Login
-        uses: azure/login@v1
-        with:
-          creds: ${{ secrets.VAULTWARDEN_AZURE_CREDENTIALS }}
+      # - name: Azure Login
+      #   uses: azure/login@v1
+      #   with:
+      #     creds: ${{ secrets.VAULTWARDEN_AZURE_CREDENTIALS }}
 
-      - name: Login to ACR
-        uses: docker/login-action@v1
-        with:
-          registry: ${{ secrets.VAULTWARDEN_REGISTRY_URL }}
-          username: ${{ secrets.VAULTWARDEN_REGISTRY_USERNAME }}
-          password: ${{ secrets.VAULTWARDEN_REGISTRY_PASSWORD }}
+      # - name: Login to ACR
+      #   uses: docker/login-action@v1
+      #   with:
+      #     registry: ${{ secrets.VAULTWARDEN_REGISTRY_URL }}
+      #     username: ${{ secrets.VAULTWARDEN_REGISTRY_USERNAME }}
+      #     password: ${{ secrets.VAULTWARDEN_REGISTRY_PASSWORD }}
   
+      - name: Azure Container Registry Login (Service Principal Method)
+        uses: Azure/docker-login@v1
+        with:
+          login-server: <your-registry-name>.azurecr.io
+          username: ${{ secrets.ACR_USERNAME }}
+          password: ${{ secrets.ACR_PASSWORD }}
+
       - name: Build and push Docker image
         run: |
           docker build --build-arg tag=${{ env.SOURCE_IMAGE_TAG }} -t ${{ secrets.VAULTWARDEN_REGISTRY_URL }}/${{ env.TARGET_IMAGE_NAME }}:${{ env.SOURCE_IMAGE_TAG }} -f vaultwarden_cust/dockerfile vaultwarden_cust
