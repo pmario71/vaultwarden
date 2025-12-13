@@ -32,23 +32,11 @@ jobs:
             echo "One or more required environment variables are not set. Aborting."
             exit 1
           fi
-
-      # - name: Azure Login
-      #   uses: azure/login@v1
-      #   with:
-      #     creds: ${{ secrets.VAULTWARDEN_AZURE_CREDENTIALS }}
-
-      # - name: Login to ACR
-      #   uses: docker/login-action@v1
-      #   with:
-      #     registry: ${{ secrets.VAULTWARDEN_REGISTRY_URL }}
-      #     username: ${{ secrets.VAULTWARDEN_REGISTRY_USERNAME }}
-      #     password: ${{ secrets.VAULTWARDEN_REGISTRY_PASSWORD }}
   
       - name: Azure Container Registry Login (Service Principal Method)
         uses: Azure/docker-login@v1
         with:
-          login-server: ${{ secrets.VAULTWARDEN_REGISTRY_URL }}
+          login-server: pmario.azurecr.io
           username: ${{ secrets.ACR_USERNAME }}
           password: ${{ secrets.ACR_PASSWORD }}
 

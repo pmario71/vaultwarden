@@ -1,6 +1,6 @@
 # File: .github/workflows/workflow.yml
 
-name: Run Azure Login with OIDC
+name: Test ACR Login with username and password
 on:
   workflow_dispatch:
 
@@ -18,4 +18,4 @@ jobs:
         password: ${{ secrets.ACR_PASSWORD }}
 
     - run: |
-        docker images
+        docker info
