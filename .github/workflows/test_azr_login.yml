@@ -1,0 +1,21 @@
+# File: .github/workflows/workflow.yml
+
+name: Run Azure Login with OIDC
+on:
+  workflow_dispatch:
+
+permissions:
+      id-token: write
+      contents: read
+jobs: 
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: azure/docker-login@v1
+      with:
+        login-server: pmario.azurecr.io
+        username: ${{ secrets.ACR_USERNAME }}
+        password: ${{ secrets.ACR_PASSWORD }}
+
+    - run: |
+        docker images
