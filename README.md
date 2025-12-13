@@ -15,15 +15,27 @@
 * [ ] enable browser plugins
 * [x] enable backup of sqlite db in `/data`
 
-## 12.12.2025 - Publishing new container version
-
-* extracted container version information into: `container_version.env`
-
-### Update process
+## Update Process
 
 * change `SOURCE_IMAGE_TAG` to new version in `container_version.env`
 * trigger github action run `build container image`
 * select newly published image in `Azure App Service portal`
+
+### Validate deployed version
+
+* at login:
+  ```ps1
+  Vaultwarden Web
+  2025.7
+  ```
+
+* call API:\
+  https://vaultwarden-asehgccdcthab6fa.germanywestcentral-01.azurewebsites.net/api/version
+
+
+## 12.12.2025 - Publishing new container version
+
+* extracted container version information into: `container_version.env`
 
 ## 15.11.2024 - Config Storage
 
