@@ -48,7 +48,7 @@ jobs:
       - name: Azure Container Registry Login (Service Principal Method)
         uses: Azure/docker-login@v1
         with:
-          login-server: <your-registry-name>.azurecr.io
+          login-server: ${{ secrets.VAULTWARDEN_REGISTRY_URL }}
           username: ${{ secrets.ACR_USERNAME }}
           password: ${{ secrets.ACR_PASSWORD }}
 
