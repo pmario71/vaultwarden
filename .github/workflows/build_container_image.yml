@@ -1,10 +1,10 @@
 name: Build container image
 
-env:
-  SOURCE_IMAGE_NAME: vaultwarden/server
-  SOURCE_IMAGE_TAG: 1.32.3-alpine
+# env:
+  # SOURCE_IMAGE_NAME: vaultwarden/server
+  # SOURCE_IMAGE_TAG: 1.32.3-alpine
   
-  TARGET_IMAGE_NAME: vaultwarden/server_mp
+  # TARGET_IMAGE_NAME: vaultwarden/server_mp
 
 # When this action will be executed
 on:
@@ -18,6 +18,20 @@ jobs:
     steps:
       - name: Checkout to the branch
         uses: actions/checkout@v2
+
+      - name: Load container_version.env variables into GITHUB_ENV
+        run: |
+          cat container_version.env >> $GITHUB_ENV
+
+      - name: Check if environment variables are set and abort if not
+        run: |
+          echo "SOURCE_IMAGE_NAME: ${{ env.SOURCE_IMAGE_NAME }}"
+          echo "SOURCE_IMAGE_TAG: ${{ env.SOURCE_IMAGE_TAG }}"
+          echo "TARGET_IMAGE_NAME: ${{ env.TARGET_IMAGE_NAME }}"
+          if [ -z "${{ env.SOURCE_IMAGE_NAME }}" ] || [ -z "${{ env.SOURCE_IMAGE_TAG }}" ] || [ -z "${{ env.TARGET_IMAGE_NAME }}" ]; then
+            echo "One or more required environment variables are not set. Aborting."
+            exit 1
+          fi
 
       - name: Azure Login
         uses: azure/login@v1
