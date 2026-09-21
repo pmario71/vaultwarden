@@ -19,7 +19,8 @@
 
 * change `SOURCE_IMAGE_TAG` to new version in `container_version.env`
 * trigger github action run `build container image`
-* select newly published image in `Azure App Service portal`
+* new version of container image shall be picked up automatically
+  * otherwise select newly published image in `Azure App Service portal` (Deployment / Deployment Center)
 
 ### Validate deployed version
 
